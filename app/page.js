@@ -1,103 +1,100 @@
-import Image from "next/image";
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome to My Next.js Project</h1>
+          <p className="text-xl mb-8">Building modern web applications with cutting-edge technology</p>
+          <button className="bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300">
+            Get Started
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Key Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <div className="text-blue-600 text-4xl mb-4">🚀</div>
+              <h3 className="text-xl font-semibold mb-2">Fast Performance</h3>
+              <p className="text-gray-600">Lightning-fast page loads and smooth navigation with Next.js optimization.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <div className="text-blue-600 text-4xl mb-4">📱</div>
+              <h3 className="text-xl font-semibold mb-2">Responsive Design</h3>
+              <p className="text-gray-600">Looks great on all devices, from mobile phones to desktop computers.</p>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+              <div className="text-blue-600 text-4xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold mb-2">Easy to Use</h3>
+              <p className="text-gray-600">Intuitive interface and straightforward navigation for all users.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">About Our Project</h2>
+              <p className="text-gray-600 mb-4">
+                This is a demo Next.js project created to showcase the capabilities of modern web development. 
+                We've built this with a focus on performance, accessibility, and best practices.
+              </p>
+              <p className="text-gray-600">
+                Whether you're a beginner or an experienced developer, this project demonstrates how to structure
+                a Next.js application with multiple sections and responsive design.
+              </p>
+            </div>
+            <div className="md:w-1/2 md:pl-12">
+              <div className="bg-blue-600 h-64 rounded-lg flex items-center justify-center text-white text-5xl">
+                Project Stats
+                <div className="absolute opacity-20 text-8xl">📊</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">What People Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gray-50 p-6 rounded-lg shadow">
+              <p className="text-gray-600 italic mb-4">
+                "This Next.js project is amazing! The performance is incredible and the developer has done a fantastic job implementing modern design principles."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">JD</div>
+                <div>
+                  <h4 className="font-semibold">John Doe</h4>
+                  <p className="text-blue-600">Web Developer</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gray-50 p-6 rounded-lg shadow">
+              <p className="text-gray-600 italic mb-4">
+                "I've been looking for a good example of a Next.js project with Tailwind CSS, and this is exactly what I needed. Clean code and beautiful design!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold mr-4">JS</div>
+                <div>
+                  <h4 className="font-semibold">Jane Smith</h4>
+                  <p className="text-blue-600">UI/UX Designer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Home;
