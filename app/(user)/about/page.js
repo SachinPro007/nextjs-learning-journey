@@ -4,7 +4,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-red-700 mb-4">About Our Company</h1>
+          <h1 className="title-heading text-4xl font-bold text-red-700 mb-4">About Our Company</h1>
           <p className="text-xl text-red-600 max-w-3xl mx-auto">
             Learn more about our mission, values, and the team behind our success.
           </p>

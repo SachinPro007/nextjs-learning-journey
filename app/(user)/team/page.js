@@ -4,7 +4,7 @@ function Team() {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-blue-800 mb-4">Meet Our Team</h1>
+          <h1 className="title-heading text-4xl font-bold text-blue-800 mb-4">Meet Our Team</h1>
           <p className="text-xl text-blue-600 max-w-3xl mx-auto">
             Dedicated professionals committed to delivering exceptional results
           </p>

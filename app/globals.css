@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+a:hover {
+  color: red;
+}
+
+.logo:hover {
+  color: pink;
+}
+
+
+.title-heading {
+  color: aqua;
+}
