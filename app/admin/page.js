@@ -15,7 +15,7 @@ const Admin =() =>  {
             </button>
             <div className="flex items-center">
               <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">AD</div>
-              <span className="ml-2 text-gray-700">Admin User</span>
+              <span className="ml-2 text-gray-700">Hello, Sachin</span>
             </div>
           </div>
         </div>
