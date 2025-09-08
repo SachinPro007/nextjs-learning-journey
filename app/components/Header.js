@@ -6,7 +6,7 @@ function Header() {
       <Link href="/"><h1 className="logo text-xl font-bold">Next.js</h1></Link>
       <ul>
         {["Home", "About", "Service", "Contact", "Team"].map((item) => (
-          <Link key={item} className="mx-3" href={`/${item === "Home"? "" : item.toLowerCase()}`}>{item}</Link>
+          <Link key={item} className="font-roboto mx-3" href={`/${item === "Home"? "" : item.toLowerCase()}`}>{item}</Link>
         ))}
       </ul>
       <Link href="/admin">Admin</Link>

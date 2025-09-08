@@ -12,3 +12,8 @@ a:hover {
 .title-heading {
   color: aqua;
 }
+
+@theme inline {
+  --font-roboto: var(--font-roboto);
+  --font-workSans: var(--font-work-Sans);
+}
