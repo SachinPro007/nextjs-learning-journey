@@ -66,11 +66,11 @@ function Team() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
 
           {/* Team Members */}
-          {team.map((member) => (
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+          {team.map((member, i) => (
+            <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
               <div className={`h-48 bg-gradient-to-r from-${member.baseColor}-400 to-${member.secondColor}-500 flex items-center justify-center`}>
-                <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-2 border-white">
-                  <Image src={member.image} width={500} height={500} alt={member.fullName} className="w-full h-full rounded-full"/>
+                <div className="relative w-32 h-32 bg-white rounded-full flex items-center justify-center border-2 border-white">
+                  <Image src={member.image}  alt={member.fullName} className="w-full h-full rounded-full" fill={true}/>
                 </div>
               </div>
               <div className="p-6 text-center">

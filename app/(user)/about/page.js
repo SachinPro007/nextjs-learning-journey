@@ -1,3 +1,11 @@
+// metadata seo for single page ... this is example or add much more if need for a single page
+export const metadata = {
+  title: "About Page",
+  description: "This is my About page description",
+  authors: [{name: "Sachin", url: "https://www.linkedin.com/in/sachinpro/"}],
+  keywords: ["keyword 1", "keyword 2", "keyword 3", "keyword 4"],
+}
+
 export default function About() {
   return (
     <div className="font-roboto min-h-screen bg-gradient-to-br from-red-50 to-orange-50 py-12 px-4 sm:px-6 lg:px-8">
