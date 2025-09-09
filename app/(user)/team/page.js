@@ -1,4 +1,56 @@
+import Image from "next/image";
+
 function Team() {
+  const team = [
+    {
+      fullName: "Sachin Sehrawat",
+      role: "CEO & Founder",
+      image: "/Sachin.png",
+      discription: "Visionary leader with 10+ years of experience in tech industry and business development.",
+      baseColor: "blue",
+      secondColor: "indigo",
+    },
+    {
+      fullName: "Rahul Rawat",
+      role: "Lead Developer",
+      image: "/1.jpg",
+      discription: "Full-stack developer specializing in React, Node.js, and cloud architecture.",
+      baseColor: "purple",
+      secondColor: "pink",
+    },
+    {
+      fullName: "Payal Rajput",
+      role: "UI/UX Designer",
+      image: "/2.jpg",
+      discription: "Creative designer focused on creating intuitive and beautiful user experiences.",
+      baseColor: "green",
+      secondColor: "teal",
+    },
+    {
+      fullName: "Surash Rathor",
+      role: "Project Manager",
+      image: "/3.jpg",
+      discription: "Organized and detail-oriented professional ensuring projects are delivered on time.",
+      baseColor: "yellow",
+      secondColor: "orange",
+    },
+    {
+      fullName: "Piyush Sharma",
+      role: "Frontend Developer",
+      image: "/4.jpg",
+      discription: "Specializes in React, Vue.js, and creating responsive and accessible web applications.",
+      baseColor: "red",
+      secondColor: "pink",
+    },
+    {
+      fullName: "Sonu Kumar",
+      role: "Backend Developer",
+      image: "/5.jpg",
+      discription: "Expert in server-side development, database design, and API architecture.",
+      baseColor: "indigo",
+      secondColor: "blue",
+    },
+  ]
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -12,158 +64,26 @@ function Team() {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {/* Team Member 1 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-blue-400 to-indigo-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-blue-700">JD</span>
-              </div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">John Doe</h3>
-              <p className="text-blue-600 font-medium mb-4">CEO & Founder</p>
-              <p className="text-gray-600 mb-4">
-                Visionary leader with 10+ years of experience in tech industry and business development.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-blue-500 hover:text-blue-700">
-                  <i className="fab fa-linkedin text-xl"></i>
-                </a>
-                <a href="#" className="text-blue-500 hover:text-blue-700">
-                  <i className="fab fa-twitter text-xl"></i>
-                </a>
-                <a href="#" className="text-blue-500 hover:text-blue-700">
-                  <i className="fas fa-envelope text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
 
-          {/* Team Member 2 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-purple-700">JS</span>
+          {/* Team Members */}
+          {team.map((member) => (
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+              <div className={`h-48 bg-gradient-to-r from-${member.baseColor}-400 to-${member.secondColor}-500 flex items-center justify-center`}>
+                <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-2 border-white">
+                  <Image src={member.image} width={500} height={500} alt={member.fullName} className="w-full h-full rounded-full"/>
+                </div>
               </div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">Jane Smith</h3>
-              <p className="text-purple-600 font-medium mb-4">Lead Developer</p>
-              <p className="text-gray-600 mb-4">
-                Full-stack developer specializing in React, Node.js, and cloud architecture.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-purple-500 hover:text-purple-700">
-                  <i className="fab fa-github text-xl"></i>
-                </a>
-                <a href="#" className="text-purple-500 hover:text-purple-700">
-                  <i className="fab fa-twitter text-xl"></i>
-                </a>
-                <a href="#" className="text-purple-500 hover:text-purple-700">
-                  <i className="fas fa-globe text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+              <div className="p-6 text-center">
+                <h3 className="text-2xl font-semibold text-gray-800">{member.fullName}</h3>
+                <p className={`text-${member.baseColor}-600 font-medium mb-4`}>{member.role}</p>
+                <p className="text-gray-600 mb-4">
+                  {member.discription}
+                </p>
 
-          {/* Team Member 3 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-green-700">MJ</span>
               </div>
             </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">Mike Johnson</h3>
-              <p className="text-green-600 font-medium mb-4">UI/UX Designer</p>
-              <p className="text-gray-600 mb-4">
-                Creative designer focused on creating intuitive and beautiful user experiences.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-green-500 hover:text-green-700">
-                  <i className="fab fa-dribbble text-xl"></i>
-                </a>
-                <a href="#" className="text-green-500 hover:text-green-700">
-                  <i className="fab fa-behance text-xl"></i>
-                </a>
-                <a href="#" className="text-green-500 hover:text-green-700">
-                  <i className="fab fa-instagram text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+          ))}
 
-          {/* Team Member 4 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-orange-700">SD</span>
-              </div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">Sarah Davis</h3>
-              <p className="text-orange-600 font-medium mb-4">Project Manager</p>
-              <p className="text-gray-600 mb-4">
-                Organized and detail-oriented professional ensuring projects are delivered on time.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-orange-500 hover:text-orange-700">
-                  <i className="fab fa-linkedin text-xl"></i>
-                </a>
-                <a href="#" className="text-orange-500 hover:text-orange-700">
-                  <i className="fas fa-envelope text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Team Member 5 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-red-400 to-pink-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-red-700">AR</span>
-              </div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">Alex Rodriguez</h3>
-              <p className="text-red-600 font-medium mb-4">Frontend Developer</p>
-              <p className="text-gray-600 mb-4">
-                Specializes in React, Vue.js, and creating responsive and accessible web applications.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-red-500 hover:text-red-700">
-                  <i className="fab fa-github text-xl"></i>
-                </a>
-                <a href="#" className="text-red-500 hover:text-red-700">
-                  <i className="fab fa-codepen text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Team Member 6 */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-            <div className="h-48 bg-gradient-to-r from-indigo-400 to-blue-500 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-white">
-                <span className="text-4xl font-bold text-indigo-700">EW</span>
-              </div>
-            </div>
-            <div className="p-6 text-center">
-              <h3 className="text-2xl font-semibold text-gray-800">Emily Wilson</h3>
-              <p className="text-indigo-600 font-medium mb-4">Backend Developer</p>
-              <p className="text-gray-600 mb-4">
-                Expert in server-side development, database design, and API architecture.
-              </p>
-              <div className="flex justify-center space-x-4">
-                <a href="#" className="text-indigo-500 hover:text-indigo-700">
-                  <i className="fab fa-github text-xl"></i>
-                </a>
-                <a href="#" className="text-indigo-500 hover:text-indigo-700">
-                  <i className="fab fa-dev text-xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Stats Section */}
