@@ -3,10 +3,11 @@
 import UserCard from "@/app/components/UserCard";
 import { useSearchParams } from "next/navigation";
 import { use, useEffect, useState } from "react";
-
+import Loader from "../loading";
 const DataFectchClient = (props) => {
   // const searchQuery = use(props.searchParams);
   const searchParams = useSearchParams()
+  const [isLoading, setIsLoading] = useState(true)
   
   
   const [user, setUser] = useState({});
@@ -21,7 +22,12 @@ const DataFectchClient = (props) => {
 
   useEffect(() => {
     fetchUser();
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000);
   }, []);
+
+  if(isLoading) return <Loader />;
 
   return (
     <div className="flex justify-center items-center h-screen w-full">

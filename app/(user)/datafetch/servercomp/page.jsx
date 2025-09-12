@@ -9,10 +9,14 @@ const DataFectchServer = async (props) => {
     `https://api.genderize.io/?name=${searchParam.name || "sachin"}`
   );
   const user = await res.json();
-
-  console.log(user);
   
 
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, 3000);
+  })
+  
   return (
     <div className="flex justify-center items-center h-screen w-full">
       <UserCard user={user}/>
