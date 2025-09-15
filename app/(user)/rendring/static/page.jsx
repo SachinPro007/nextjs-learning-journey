@@ -1,4 +1,5 @@
 import { db } from "@/config/db";
+export const revalidate = 30
 
 const StaticPage = async () => {
   const [doctors] = await db.execute(`SELECT * FROM doctors`);
