@@ -1,7 +1,10 @@
 import { db } from "@/config/db";
+export const dynamic = "force-dynamic"
 
-const page = async () => {
+const DynamicPage = async () => {
   const [doctors] = await db.execute(`SELECT * FROM doctors`);
+  console.log("Dynamic Page");
+  
 
   return (
     <ul>
@@ -12,4 +15,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default DynamicPage;
