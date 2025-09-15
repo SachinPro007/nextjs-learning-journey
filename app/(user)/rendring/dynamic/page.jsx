@@ -35,7 +35,7 @@ const DoctorList = async () => {
   );
 };
 
-const getAllDoctors = cache(async () => {
+export const getAllDoctors = cache(async () => {
   const [doctors] = await db.execute(`SELECT * FROM doctors`);
   console.log("Fetching Doctors");
   return doctors;
