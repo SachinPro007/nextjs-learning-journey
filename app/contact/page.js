@@ -1,3 +1,5 @@
+import { contactAction } from "./Contact.action";
+
 function Contact() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -14,7 +16,7 @@ function Contact() {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a message</h2>
-            <form className="space-y-6">
+            <form className="space-y-6" action={contactAction}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -22,6 +24,7 @@ function Contact() {
                 <input
                   type="text"
                   id="name"
+                  name="fullname"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="Your name"
                 />
@@ -34,6 +37,7 @@ function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="your.email@example.com"
                 />
@@ -46,6 +50,7 @@ function Contact() {
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="What is this regarding?"
                 />
@@ -57,6 +62,7 @@ function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows="5"
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="Your message here..."
