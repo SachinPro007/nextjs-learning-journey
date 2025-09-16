@@ -2,15 +2,22 @@
 
 import { db } from "@/config/db";
 
-export const contactAction = async (formdata) => {
+export const contactAction = async (previesState, formdata) => {
   // const fullName = formdata.get("fullname");
 
-  const { fullname, email, subject, message } = Object.fromEntries(
-    formdata.entries()
-  );
-  await db.execute(
-    `INSERT INTO contact_form (full_name, subject, email, message) value (?, ?, ?, ?)`, [fullname, subject, email, message]
-  );
-  console.log("Contact form data added to your database");
-  
+  try {
+    console.log(formdata);
+    
+    const { fullname, email, subject, message } = Object.fromEntries(formdata.entries());
+    await db.execute(
+      `INSERT INTO contact_form (full_name, subject, email, message) value (?, ?, ?, ?)`,
+      [fullname, subject, email, message]
+    );
+
+    return {success: true, message: "Form sumitted successfull"}
+  } catch (error) {
+    console.log("server action: ", error);
+    
+    return {success: false, message: "Error while submitting"}
+  }
 };
