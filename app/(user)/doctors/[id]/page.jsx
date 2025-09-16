@@ -2,11 +2,16 @@ import { db } from "@/config/db";
 import { Calendar, MapPin, Phone, Mail, Award, Activity } from "lucide-react";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams(){
+  const [doctors] = await db.execute(`select doctor_id from doctors`)    
+  return doctors.map(doctor => ({id: doctor.doctor_id.toString()}));
+}
+
 export default async function DoctorCard({ params }) {
   const param = await params;
 
-  const [doctor] = await db.execute(
-    `SELECT * FROM doctors WHERE doctor_id = ${param.doctor};`
+  const [[doctor]] = await db.execute(
+    `SELECT * FROM doctors WHERE doctor_id = ${param.id};`
   );
 
   // Format date of birth and joining date for better display
@@ -19,7 +24,7 @@ export default async function DoctorCard({ params }) {
     });
   };  
 
-  if(doctor.length === 0) notFound()
+  if(!doctor) notFound()
 
   return (
     <div className="h-screen flex justify-center items-center">
@@ -29,25 +34,25 @@ export default async function DoctorCard({ params }) {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-2xl font-bold">
-                {doctor[0].first_name[0]}
-                {doctor[0].last_name[0]}
+                {doctor.first_name[0]}
+                {doctor.last_name[0]}
               </div>
               <div>
                 <h2 className="text-2xl font-bold">
-                  Dr. {doctor[0].first_name} {doctor[0].last_name}
+                  Dr. {doctor.first_name} {doctor.last_name}
                 </h2>
-                <p className="text-blue-100">{doctor[0].specialization}</p>
+                <p className="text-blue-100">{doctor.specialization}</p>
               </div>
             </div>
             <span
               className={`px-4 py-2 text-sm rounded-full flex items-center ${
-                doctor[0].is_active
+                doctor.is_active
                   ? "bg-green-100 text-green-800"
                   : "bg-red-100 text-red-800"
               }`}
             >
               <Activity size={14} className="mr-1" />
-              {doctor[0].is_active ? "Active" : "Inactive"}
+              {doctor.is_active ? "Active" : "Inactive"}
             </span>
           </div>
         </div>
@@ -62,12 +67,12 @@ export default async function DoctorCard({ params }) {
 
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <Mail size={18} className="mr-3 text-blue-500" />
-                <span>{doctor[0].email}</span>
+                <span>{doctor.email}</span>
               </div>
 
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <Phone size={18} className="mr-3 text-blue-500" />
-                <span>{doctor[0].phone}</span>
+                <span>{doctor.phone}</span>
               </div>
 
               <div className="flex items-start text-gray-600 dark:text-gray-300">
@@ -76,8 +81,8 @@ export default async function DoctorCard({ params }) {
                   className="mr-3 mt-1 text-blue-500 flex-shrink-0"
                 />
                 <span>
-                  {doctor[0].address}, {doctor[0].city}, {doctor[0].state} -{" "}
-                  {doctor[0].postal_code}
+                  {doctor.address}, {doctor.city}, {doctor.state} -{" "}
+                  {doctor.postal_code}
                 </span>
               </div>
             </div>
@@ -91,29 +96,29 @@ export default async function DoctorCard({ params }) {
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <Award size={18} className="mr-3 text-blue-500" />
                 <span>
-                  <strong>License:</strong> {doctor[0].license_number}
+                  <strong>License:</strong> {doctor.license_number}
                 </span>
               </div>
 
               <div className="text-gray-600 dark:text-gray-300">
-                <strong>Experience:</strong> {doctor[0].experience_years} years
+                <strong>Experience:</strong> {doctor.experience_years} years
               </div>
 
-              {doctor[0].date_of_birth && (
+              {doctor.date_of_birth && (
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <Calendar size={18} className="mr-3 text-blue-500" />
                   <span>
-                    <strong>DOB:</strong> {formatDate(doctor[0].date_of_birth)}
+                    <strong>DOB:</strong> {formatDate(doctor.date_of_birth)}
                   </span>
                 </div>
               )}
 
-              {doctor[0].joining_date && (
+              {doctor.joining_date && (
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <Calendar size={18} className="mr-3 text-blue-500" />
                   <span>
                     <strong>Joined:</strong>{" "}
-                    {formatDate(doctor[0].joining_date)}
+                    {formatDate(doctor.joining_date)}
                   </span>
                 </div>
               )}
