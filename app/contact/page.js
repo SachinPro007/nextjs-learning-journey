@@ -1,11 +1,24 @@
 "use client"
 
-import { useActionState } from "react";
+import { useActionState, useState, useTransition } from "react";
 import { contactAction } from "./Contact.action";
 
 
 function Contact() {
-  const [state, formAction, isPending] = useActionState(contactAction, null)
+  // const [state, formAction, isPending] = useActionState(contactAction, null)
+  
+  const [isPending, startTransition] = useTransition()
+  const [contactFormRes, setContactFormRes] = useState(null)
+
+  const handleFormData = (formdata) => {
+    const {fullname, email, subject, message} = Object.fromEntries(formdata)
+    // console.log(fullname, email, subject, message);
+    startTransition(async() => {
+      const res = await contactAction(fullname, email, subject, message)
+      setContactFormRes(res)
+      
+    })    
+  }
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 py-12 px-4 sm:px-6 lg:px-8">
@@ -22,7 +35,7 @@ function Contact() {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">Send us a message</h2>
-            <form className="space-y-6" action={formAction}>
+            <form className="space-y-6" action={handleFormData}>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Full Name
@@ -78,15 +91,15 @@ function Contact() {
               
               <button
                 type="submit"
-                disabled={isPending}
+                // disabled={isPending}
                 className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition duration-300"
               >
                 {isPending ? <span>Loading...</span> : "Send Message"}
               </button>
 
               <section>
-                {state && (
-                  <p className={`text-center  ${state.success ? "text-green-500" : "text-red-500"}`}>{state.message}</p>
+                {contactFormRes && (
+                  <p className={`text-center  ${contactFormRes.success ? "text-green-500" : "text-red-500"}`}>{contactFormRes.message}</p>
                 )}
               </section>
             </form>
