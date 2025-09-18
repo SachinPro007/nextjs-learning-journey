@@ -2,10 +2,10 @@ import { db } from "@/config/db";
 import { Calendar, MapPin, Phone, Mail, Award, Activity } from "lucide-react";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams(){
-  const [doctors] = await db.execute(`select doctor_id from doctors`)    
-  return doctors.map(doctor => ({id: doctor.doctor_id.toString()}));
-}
+// export async function generateStaticParams(){
+//   const [doctors] = await db.execute(`select doctor_id from doctors`)    
+//   return doctors.map(doctor => ({id: doctor.doctor_id.toString()}));
+// }
 
 export default async function DoctorCard({ params }) {
   const param = await params;
