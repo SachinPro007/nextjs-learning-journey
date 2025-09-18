@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { getAllDoctors } from "../rendring/dynamic/page";
 
-const { getAllDoctors } = require("../rendring/dynamic/page");
 
 const DoctorList = async () => {
   const doctors = await getAllDoctors();
