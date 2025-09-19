@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image";
+import { easeInOut, motion } from "motion/react"
 
 function Team() {
   const team = [
@@ -67,21 +70,28 @@ function Team() {
 
           {/* Team Members */}
           {team.map((member, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <motion.div 
+             initial={{opacity: 0, y: 40}}
+             animate={{opacity: 1, y: 0}}
+             transition={{duration: 0.2, ease: easeInOut, delay: `0.${i}`}}
+             whileTap={{scale: 0.9}}
+            //  whileHover={{scale: 1}}
+             
+             key={i} className="bg-white rounded-xl shadow-lg overflow-hidden ">
               <div className={`h-48 bg-gradient-to-r from-${member.baseColor}-400 to-${member.secondColor}-500 flex items-center justify-center`}>
-                <div className="relative w-32 h-32 bg-white rounded-full flex items-center justify-center border-2 border-white">
-                  <Image src={member.image}  alt={member.fullName} className="w-full h-full rounded-full" fill={true}/>
-                </div>
+                <motion.div whileHover={{rotate: 360}} transition={{duration: 0.5, ease: easeInOut}}  className="relative w-32 h-32 bg-white rounded-full flex items-center justify-center border-2 border-white">
+                  <Image src={member.image} alt={member.fullName} className="w-full h-full rounded-full" fill={true} />
+                </motion.div>
               </div>
               <div className="p-6 text-center">
-                <h3 className="text-2xl font-semibold text-gray-800">{member.fullName}</h3>
+                <motion.h3 initial={{y: 40}} animate={{y: 0}} transition={{duration: 0.2, delay: `0.${i + 1}`}} className="text-2xl font-semibold text-gray-800">{member.fullName}</motion.h3>
                 <p className={`text-${member.baseColor}-600 font-medium mb-4`}>{member.role}</p>
-                <p className="text-gray-600 mb-4">
+                <motion.p initial={{ x: 40}} animate={{ x:0}} transition={{duration: 0.2, delay: `0.${i + 2}`}} className="text-gray-600 mb-4">
                   {member.discription}
-                </p>
+                </motion.p>
 
               </div>
-            </div>
+            </motion.div>
           ))}
 
         </div>
