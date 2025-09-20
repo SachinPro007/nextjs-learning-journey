@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import UserCard from "@/app/components/UserCard";
+import UserCard from "@/components/UserCard";
 const DataFectchServer = async ({searchParam}) => {  
 
   const res = await fetch(

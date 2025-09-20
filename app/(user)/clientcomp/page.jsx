@@ -1,6 +1,6 @@
 "use client";
 
-import Counter from "@/app/components/Counter";
+import Counter from "@/components/Counter";
 import { useEffect, useState } from "react";
 
 const ClientComponent = () => {

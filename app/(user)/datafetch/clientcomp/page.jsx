@@ -1,6 +1,6 @@
 "use client";
 
-import UserCard from "@/app/components/UserCard";
+import UserCard from "@/components/UserCard";
 import { useSearchParams } from "next/navigation";
 import { use, useEffect, useState } from "react";
 import Loader from "../loading";
